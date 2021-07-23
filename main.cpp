@@ -25,12 +25,18 @@ void PrintTableHeader() {
 
 void PrintTableBody() {
     ifstream input("./data/table-data.txt");
-    for (int k = 0; k < NUM_LINES; ++k) {
+    int rowNumber = 0;
+    while (true) {
         int intValue;
         double doubleValue;
         input >> intValue >> doubleValue;
-        cout << setw(COLUMN_WIDTH) << (k+1) << " | ";
+
+        if (input.fail()) break;
+
+        cout << setw(COLUMN_WIDTH) << (rowNumber + 1) << " | ";
         cout << setw(COLUMN_WIDTH) << intValue << " | ";
         cout << setw(COLUMN_WIDTH) << doubleValue << endl;
+
+        rowNumber++;
     }
 }
